@@ -1,5 +1,13 @@
-runtime: python312 # Define the python version pre-installed on the machine
-service: default # Give a name to your app. ❗️ First deployment must be called "default"
-handlers: # Define how to handle incoming requests. Here, any request will be handled by main.py
+# runtime: python312 # Define the python version pre-installed on the machine
+# service: default # Give a name to your app. ❗️ First deployment must be called "default"
+# handlers: # Define how to handle incoming requests. Here, any request will be handled by main.py
+#   - url: /.*
+#     script: main.py
+runtime: python312
+service: default
+
+entrypoint: gunicorn -b :$PORT wsgi:app
+
+handlers:
   - url: /.*
-    script: main.py
+    script: auto
