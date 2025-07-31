@@ -3,7 +3,6 @@ from flask import Flask, render_template, request
 from src.longest_word.game import Game
 # from wsgi import app
 
-
 app = Flask(__name__)
 
 @app.route('/')
